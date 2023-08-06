@@ -150,7 +150,7 @@ export default function NewBlahg() {
         <option value="Thoughts">Thoughts</option>
         <option value="ToDos">ToDos</option>
       </select><br />
-      {'Image '}<input value={url} onChange={handleChange} name="url"></input><br />
+      {'Image '}<input src={blahg.image} onChange={handleChange} name="url"></input><br />
       
 
 
@@ -189,7 +189,7 @@ export default function NewBlahg() {
                             )
                         })
                     }
-                </ul>): <h1>No Expenses Yet Add One Below</h1>
+                </ul>): <>No Expenses Yet Add One Below</>
             }
 
 
