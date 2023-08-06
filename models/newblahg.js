@@ -10,4 +10,4 @@ const newblahgSchema = new Schema({
 timestamps: true
 })
 
-module.exports = model('Newblahg', newblahgSchema)
+module.exports = model('NewBlahg', newblahgSchema)

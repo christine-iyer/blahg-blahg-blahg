@@ -1,5 +1,5 @@
 require('dotenv').config()
-const NewBlahg = require('../models/newblahg')
+const NewBlahg = require('../../models/newblahg')
 
 const destroyNewBlahg = async (req, res, next) => {
      try {
