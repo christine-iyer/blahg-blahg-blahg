@@ -91,8 +91,7 @@ export default function NewBlahg() {
 
 
   const [url, updateUrl] = useState(false);
- 
-  const [error, updateError] = useState();
+ const [error, updateError] = useState();
   function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
