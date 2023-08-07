@@ -51,7 +51,7 @@ export default function NewBlahg() {
         },
         body: JSON.stringify({ ...updatedData })
       })
-      const data = await response.json() 
+      const data = await response.json()
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
@@ -73,12 +73,12 @@ export default function NewBlahg() {
       const data = await response.json()
       setFoundBlahg(data)
       setBlahg({
-          title: '',
-          author: '',
-          category: '',
-          text: '',
-          image: ''
- })
+        title: '',
+        author: '',
+        category: '',
+        text: '',
+        image: ''
+      })
     } catch (error) {
       console.error(error)
     }
@@ -91,7 +91,7 @@ export default function NewBlahg() {
 
 
   const [url, updateUrl] = useState(false);
- const [error, updateError] = useState();
+  const [error, updateError] = useState();
   function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
@@ -104,18 +104,18 @@ export default function NewBlahg() {
     updateUrl(result?.info?.secure_url);
     console.dir(url);
     setBlahg({
-     title: '',
-     author: '',
-     category: '',
-     text: '',
-     image: result?.info?.secure_url
+      title: '',
+      author: '',
+      category: '',
+      text: '',
+      image: result?.info?.secure_url
 
-  })
-}
+    })
+  }
 
   return (
     <>
-    <UploadWidget onUpload={handleOnUpload}>
+      <UploadWidget onUpload={handleOnUpload}>
         {({ open }) => {
           function handleOnClick(e) {
             e.preventDefault();
@@ -132,31 +132,56 @@ export default function NewBlahg() {
       {error && <p>{error}</p>}
 
       {url && (
-        <div key={url._id} className='card' style={{ width: '18rem' }}
+        <div key={url._id} className='card' style={{ width: '8rem' }}
         >
-          <img variant="top"  src={url} id="uploadedimage"  ></img>
+          <img variant="top" src={url} id="uploadedimage"  ></img>
           <p className="url">{url}</p>
         </div>
       )}
 
-
-      {'New Blahg Name'}<input value={blahg.title} onChange={handleChange} name="title"></input><br />
-      {'Author '}<input value={blahg.author} onChange={handleChange} name="author"></input><br />
-      {'Text '}<input value={blahg.text} onChange={handleChange} name="text"></input><br />
-      {'Category '}<select
+      {'New Blahg Name'}
+      <input
+        value={blahg.title}
+        onChange={handleChange}
+        name="title">
+      </input>
+      <br />
+      {'Author '}
+      <input
+        value={blahg.author}
+        onChange={handleChange}
+        name="author">
+      </input>
+      <br />
+      {'Text '}
+      <input
+        value={blahg.text}
+        onChange={handleChange}
+        name="text">
+      </input>
+      <br />
+      {'Category '}
+      <select
         value={blahg.category}
         onChange={handleChange}
         name="category">
-          <option value="Curiousities">Select One ...</option>
+        <option value="Curiousities">Select One ...</option>
         <option value="Curiousities">Curiousities</option>
         <option value="Thoughts">Thoughts</option>
         <option value="ToDos">ToDos</option>
-      </select><br />
-      {'Image '}<input value={url} onChange={handleChange} name="url"></input><br />
-      
+      </select>
+      <br />
+      {'Image '}
+      <input
+        value={url}
+        onChange={handleChange}
+        name="url">
+      </input>
+      <br />
 
 
-      
+
+
 
 
 
@@ -172,29 +197,30 @@ export default function NewBlahg() {
           <p>{foundBlahg.author}</p>
           <p>{foundBlahg.text}</p>
           <p>{foundBlahg.category}</p>
-          <img variant="top"  src={foundBlahg.image} id="uploadedimage"  ></img>
-         
+          <img variant="top" src={foundBlahg.image} id="uploadedimage"  ></img>
 
-        </div> : <>No New Accounts Found </>
+
+        </div> : <>No New Blog Entries Found </>
       }
 
-{
-  <div>
-                blahgs && blahgs.length ? (<ul>
-                    {
-                        blahgs.map((blahg) => {
-                            return (
-                                <li key={blahg._id}>
-                                    {blahg.title} is {blahg.author} {blahg.category} {blahg.text}
-                                    <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
-                                    <br/><button onClick={() => updateNewBlahg(blahg._id)}>Edit</button>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>): <>No Expenses Yet Add One Below</>
-        </div>     }
-           
+      {
+        
+          blahgs && blahgs.length ? (<ul>
+            {
+              blahgs.map((blahg) => {
+                return (
+                  <li key={blahg._id}>
+                    {blahg.title} is {blahg.author} {blahg.category} {blahg.text}
+                    <img src={blahg.image} alt={blahg.category} />
+                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
+                    <br /><button onClick={() => updateNewBlahg(blahg._id)}>Edit</button>
+                  </li>
+                )
+              })
+            }
+          </ul>): <>No Expenses Yet Add One Below</>
+        }
+
 
 
 
