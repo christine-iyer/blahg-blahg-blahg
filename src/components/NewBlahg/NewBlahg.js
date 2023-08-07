@@ -51,8 +51,11 @@ export default function NewBlahg() {
         },
         body: JSON.stringify({ ...updatedData })
       })
-      const data = await response.json()
-      setFoundBlahg(data)
+      const data = await response.json() 
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
+      setBlahgs(blahgsCopy)
     } catch (error) {
       console.error(error)
     }
@@ -150,7 +153,7 @@ export default function NewBlahg() {
         <option value="Thoughts">Thoughts</option>
         <option value="ToDos">ToDos</option>
       </select><br />
-      {'Image '}<input src={blahg.image} onChange={handleChange} name="url"></input><br />
+      {'Image '}<input value={url} onChange={handleChange} name="url"></input><br />
       
 
 
