@@ -3,9 +3,9 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 
 export default function NewBlahg() {
-  const [blahgs, setNewblahgs] = useState([])
-  const [foundNewblahg, setFoundNewblahg] = useState(null)
-  const [blahg, setNewblahg] = useState({
+  const [blahgs, setBlahgs] = useState([])
+  const [foundBlahg, setFoundBlahg] = useState(null)
+  const [blahg, setBlahg] = useState({
     title: '',
     author: '',
     category: '',
@@ -13,21 +13,21 @@ export default function NewBlahg() {
     image: ''
   })
   const handleChange = (evt) => {
-    setNewblahg({ ...blahg, [evt.target.name]: evt.target.value })
+    setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
 
   // index
-  const getNewPts = async () => {
+  const getNewBlahgs = async () => {
     try {
       const response = await fetch('/api/blahgs')
       const data = await response.json()
-      setNewblahgs(data)
+      setBlahgs(data)
     } catch (error) {
       console.error(error)
     }
   }
   // delete
-  const deleteNewPt = async (id) => {
+  const deleteNewBlahg = async (id) => {
     try {
       const response = await fetch(`/api/blahgs/${id}`, {
         method: "DELETE",
@@ -36,13 +36,13 @@ export default function NewBlahg() {
         }
       })
       const data = await response.json()
-      setFoundNewblahg(data)
+      setFoundBlahg(data)
     } catch (error) {
       console.error(error)
     }
   }
   // update
-  const updateNewPt = async (id, updatedData) => {
+  const updateNewBlahg = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/blahgs/${id}`, {
         method: "PUT",
@@ -52,13 +52,13 @@ export default function NewBlahg() {
         body: JSON.stringify({ ...updatedData })
       })
       const data = await response.json()
-      setFoundNewblahg(data)
+      setFoundBlahg(data)
     } catch (error) {
       console.error(error)
     }
   }
   // create
-  const createNewPt = async () => {
+  const createNewBlahg = async () => {
     try {
       const response = await fetch(`/api/blahgs`, {
         method: "POST",
@@ -68,8 +68,8 @@ export default function NewBlahg() {
         body: JSON.stringify({ ...blahg })
       })
       const data = await response.json()
-      setFoundNewblahg(data)
-      setNewblahg({
+      setFoundBlahg(data)
+      setBlahg({
           title: '',
           author: '',
           category: '',
@@ -83,8 +83,8 @@ export default function NewBlahg() {
 
 
   useEffect(() => {
-    getNewPts()
-  }, [foundNewblahg])
+    getNewBlahgs()
+  }, [foundBlahg])
 
 
   const [url, updateUrl] = useState(false);
@@ -101,7 +101,7 @@ export default function NewBlahg() {
     console.dir(result);
     updateUrl(result?.info?.secure_url);
     console.dir(url);
-    setNewblahg({
+    setBlahg({
      title: '',
      author: '',
      category: '',
@@ -163,34 +163,36 @@ export default function NewBlahg() {
 
 
 
-      <button onClick={() => createNewPt()}>Create A New NewPt</button>
+      <button onClick={() => createNewBlahg()}>Create A New NewBlahg</button>
       {
-        foundNewblahg ? <div>
-          <h2>{foundNewblahg.title}</h2>
-          <h2>{foundNewblahg.author}</h2>
-          <h2>{foundNewblahg.text}</h2>
-          <h2>{foundNewblahg.category}</h2>
-          <img variant="top"  src={foundNewblahg.image} id="uploadedimage"  ></img>
+        foundBlahg ? <div>
+          <p>{foundBlahg.title}</p>
+          <p>{foundBlahg.author}</p>
+          <p>{foundBlahg.text}</p>
+          <p>{foundBlahg.category}</p>
+          <img variant="top"  src={foundBlahg.image} id="uploadedimage"  ></img>
          
 
         </div> : <>No New Accounts Found </>
       }
 
 {
+  <div>
                 blahgs && blahgs.length ? (<ul>
                     {
                         blahgs.map((blahg) => {
                             return (
                                 <li key={blahg._id}>
                                     {blahg.title} is {blahg.author} {blahg.category} {blahg.text}
-                                    <br/><button onClick={() => deleteNewPt(blahg._id)}>X</button>
-                                    <br/><button onClick={() => updateNewPt(blahg._id)}>Edit</button>
+                                    <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
+                                    <br/><button onClick={() => updateNewBlahg(blahg._id)}>Edit</button>
                                 </li>
                             )
                         })
                     }
                 </ul>): <>No Expenses Yet Add One Below</>
-            }
+        </div>     }
+           
 
 
 
