@@ -209,9 +209,10 @@ export default function NewBlahg() {
             {
               blahgs.map((blahg) => {
                 return (
-                  <li key={blahg._id}>
+                  <li key={blahg._id} style={{'listStyle':'none'}}>
                     {blahg.title} is {blahg.author} {blahg.category} {blahg.text}
-                    <img src={blahg.image} alt={blahg.category} />
+                    <img  src={blahg.image} alt={blahg.category} style={{'min-height': '120px',
+    'max-height': '120px'}}/>
                     <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                     <br /><button onClick={() => updateNewBlahg(blahg._id)}>Edit</button>
                   </li>
