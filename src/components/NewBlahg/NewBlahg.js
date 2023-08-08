@@ -1,6 +1,30 @@
 import { useState, useEffect } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { border } from '@cloudinary/url-gen/qualifiers/background';
+
+// import Button from 'react-bootstrap/Button';
+// import Card from 'react-bootstrap/Card';
+
+// function BasicExample() {
+//   return (
+//     <Card style={{ width: '18rem' }}>
+//       <Card.Img variant="top" src="holder.js/100px180" />
+//       <Card.Body>
+//         <Card.Title>Card Title</Card.Title>
+//         <Card.Text>
+//           Some quick example text to build on the card title and make up the
+//           bulk of the card's content.
+//         </Card.Text>
+//         <Button variant="primary">Go somewhere</Button>
+//       </Card.Body>
+//     </Card>
+//   );
+// }
+
+// export default BasicExample;
 
 export default function NewBlahg() {
   const [blahgs, setBlahgs] = useState([])
@@ -197,30 +221,49 @@ export default function NewBlahg() {
           <p>{foundBlahg.author}</p>
           <p>{foundBlahg.text}</p>
           <p>{foundBlahg.category}</p>
-          <img variant="top" src={foundBlahg.image} id="uploadedimage"  ></img>
+          <Card.Img variant="top" src={foundBlahg.image} id="uploadedimage"  ></Card.Img>
 
 
         </div> : <>No New Blog Entries Found </>
       }
 
       {
-        
-          blahgs && blahgs.length ? (<ul>
-            {
-              blahgs.map((blahg) => {
-                return (
-                  <li key={blahg._id} style={{'listStyle':'none'}}>
-                    {blahg.title} is {blahg.author} {blahg.category} {blahg.text}
-                    <img  src={blahg.image} alt={blahg.category} style={{'min-height': '120px',
-    'max-height': '120px'}}/>
-                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
-                    <br /><button onClick={() => updateNewBlahg(blahg._id)}>Edit</button>
-                  </li>
-                )
-              })
-            }
-          </ul>): <>No Expenses Yet Add One Below</>
-        }
+
+        blahgs && blahgs.length ? (<ul>
+          {
+            blahgs.map((blahg) => {
+              return (
+               
+
+                <Card key={blahg._id} style={{ 'width': '80%', 'padding': '5px', 'listStyle': 'none', 'borderStyle': 'dotted', 'textAlign': 'left', 'alignItems': 'flex-start' }}>
+                  
+                    
+                    
+                    <Card.Header>
+                    <Card.Title style={{ 'justifyContent': 'left', 'alignItems': 'flex-start', 'fontSize': '22px' }}>{blahg.title}</Card.Title>
+                    <Card.Img src={blahg.image} alt={blahg.category} style={{
+                      'min-height': '120px',
+                      'max-height': '120px', 'textAlign': 'justify'
+                    }}></Card.Img>
+
+                    <Card.Subtitle style={{ 'textAlign': 'left', 'fontSize': '20px' }}>by  {blahg.author}</Card.Subtitle>
+                    </Card.Header>
+                    
+                    
+                    <Card.Body>
+                    <Card.Text style={{ 'justifyContent': 'left', 'fontSize': '16px' }}>{blahg.text}</Card.Text>
+
+
+
+                    <br /><Button variant='primary' style={{ 'textAligh': 'right' }} onClick={() => deleteNewBlahg(blahg._id)}>X</Button>
+                    <br /><Button onClick={() => updateNewBlahg(blahg._id)}>Edit</Button>
+                  </Card.Body>
+                </Card>
+              )
+            })
+          }
+        </ul>) : <>No Expenses Yet Add One Below</>
+      }
 
 
 
