@@ -139,6 +139,8 @@ export default function NewBlahg() {
 
   return (
     <>
+    <section>
+    <h1>CREATE A NEW BLOG</h1>
       <UploadWidget onUpload={handleOnUpload}>
         {({ open }) => {
           function handleOnClick(e) {
@@ -156,9 +158,8 @@ export default function NewBlahg() {
       {error && <p>{error}</p>}
 
       {url && (
-        <div key={url._id} className='card' style={{ width: '8rem' }}
-        >
-          <img variant="top" src={url} id="uploadedimage"  ></img>
+        <div key={url._id} className='card' style={{ width: '8rem' }}>
+          <img variant="top" src={url} id="uploadedimage"></img>
           <p className="url">{url}</p>
         </div>
       )}
@@ -203,20 +204,11 @@ export default function NewBlahg() {
       </input>
       <br />
 
-
-
-
-
-
-
-
-
-
-
-
-      <button onClick={() => createNewBlahg()}>Create A New NewBlahg</button>
-      {
-        foundBlahg ? <div>
+<button onClick={() => createNewBlahg()}>READY TO SEE YOUR NewBlahg</button>
+</section>
+{/* 
+      {foundBlahg ? 
+      <div>
           <p>{foundBlahg.title}</p>
           <p>{foundBlahg.author}</p>
           <p>{foundBlahg.text}</p>
@@ -225,29 +217,41 @@ export default function NewBlahg() {
 
 
         </div> : <>No New Blog Entries Found </>
-      }
+      } */}
 
       {
 
-        blahgs && blahgs.length ? (<ul>
+        blahgs && blahgs.length ? (
+        <div className='collumns'>
+          <div className='collumn'>
           {
             blahgs.map((blahg) => {
               return (
+                
+
                
 
-                <Card key={blahg._id} style={{ 'width': '80%', 'padding': '5px', 'listStyle': 'none', 'borderStyle': 'dotted', 'textAlign': 'left', 'alignItems': 'flex-start' }}>
+                <Card key={blahg._id} style={{ 'width': '80%', 'padding': '5px', 'listStyle': 'none', 'borderStyle': 'dotted', 'textAlign': 'left', 'alignItems': 'flex-start','borderRadius':'15px' }}>
                   
                     
                     
-                    <Card.Header>
-                    <Card.Title style={{ 'justifyContent': 'left', 'alignItems': 'flex-start', 'fontSize': '22px' }}>{blahg.title}</Card.Title>
-                    <Card.Img src={blahg.image} alt={blahg.category} style={{
-                      'min-height': '120px',
-                      'max-height': '120px', 'textAlign': 'justify'
+                    <div className='head'>
+                    <span class="headline hl3">{blahg.title}</span>
+               <p>
+                    <span class="headline hl4">by {blahg.author}</span>
+               </p>
+
+
+                    {/* <Card.Title style={{ 'justifyContent': 'left', 'alignItems': 'flex-start', 'fontSize': '22px' }}>{blahg.title}</Card.Title> */}
+                 
+                    <Card.Img variant="top" src={blahg.image} alt={blahg.category} style={{
+                      'objectFit':'fill', 'borderRadius':'5px','width':'10%',
+                       'maxHeight':'15%', 'position': 'top'
                     }}></Card.Img>
 
-                    <Card.Subtitle style={{ 'textAlign': 'left', 'fontSize': '20px' }}>by  {blahg.author}</Card.Subtitle>
-                    </Card.Header>
+
+                    {/* <Card.Subtitle style={{ 'textAlign': 'left', 'fontSize': '20px' }}>by  {blahg.author}</Card.Subtitle> */}
+                    </div>
                     
                     
                     <Card.Body>
@@ -259,10 +263,12 @@ export default function NewBlahg() {
                     <br /><Button onClick={() => updateNewBlahg(blahg._id)}>Edit</Button>
                   </Card.Body>
                 </Card>
+                
               )
             })
           }
-        </ul>) : <>No Expenses Yet Add One Below</>
+          </div>
+        </div>) : <>No Expenses Yet Add One Below</>
       }
 
 
