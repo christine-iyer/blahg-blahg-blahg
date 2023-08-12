@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import Header from './components/Header/Header';
 import NewBlahg from './components/NewBlahg/NewBlahg';
 import './App.css';
 
@@ -7,9 +7,9 @@ function App() {
     <div className="App">
       <header className="App-header">
    
-        <p>
+        <>
           <NewBlahg />
-        </p>
+        </>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -19,6 +19,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <>
+      <Header></Header>
+      </>
+
     </div>
   );
 }

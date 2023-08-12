@@ -236,9 +236,9 @@ export default function NewBlahg() {
                     
                     
                     <div className='head'>
-                    <span class="headline hl3">{blahg.title}</span>
+                    <span className="headline hl3">{blahg.title}</span>
                <p>
-                    <span class="headline hl4">by {blahg.author}</span>
+                    <span className="headline hl4">by {blahg.author}</span>
                </p>
 
 
