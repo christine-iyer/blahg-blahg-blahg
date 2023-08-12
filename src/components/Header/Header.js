@@ -3,7 +3,6 @@ import React from 'react'
 export default function Header() {
   return (
     <div>
-
       <div className="head">
         <div className="headerobjectswrapper">
           <div className="weatherforcastbox"><span >Weatherforcast </span>
@@ -30,29 +29,28 @@ export default function Header() {
               </p>
             </div>
             <p>There was scarcely an intimation of movement from the pit.</p>
-
             <figure className="figure">
               <img className="media" src="http://i.giphy.com/PW7MoTD2d9pJK.gif" alt="" />
               <figcaption className="figcaption">Hermine hoping for courage.</figcaption>
             </figure>
             <p>It was this, as much as anything, that gave people courage,  to enclose the pit in its attenuated horns.  I, too, on my side began to move towards the pit.</p>
             <p>lag.</p>
-            </div>
           </div>
-          <div className="collumn">
-            <div className="head">
-              <span className="headline hl1">May the Force be with you</span>
-              <p>
-                <span className="headline hl2"> instinct</span>
-                </p>
-                </div>
-           
+        </div>
+        <div className="collumn">
+          <div className="head">
+            <span className="headline hl1">May the Force be with you</span>
+            <p>
+              <span className="headline hl2"> instinct</span>
+            </p>
+          </div>
           <figure className="figure">
             <img className="media" src="http://i.giphy.com/4fDWVPMoSyhgc.gif" alt="" />
             <figcaption className="figcaption">"This time, let go your conscious self and act on instinct."</figcaption>
           </figure>
           <p>Leaveboard were killed. <span className="citation">"Don't under&shy;estimate the Force. I suggest you try it again, Luke."</span> This time</p>
-          <p>You don't h.</p></div>
+          <p>You don't h.</p>
+        </div>
         <div className="collumn">
           <div className="head">
             <span className="headline hl3">The buzz of the little world </span>
@@ -74,7 +72,7 @@ export default function Header() {
         </div>
       </div>
     </div >
-  
+
   )
 }
 
