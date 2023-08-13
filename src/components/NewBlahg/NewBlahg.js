@@ -223,7 +223,7 @@ export default function NewBlahg() {
 
         blahgs && blahgs.length ? (
         <div className='collumns'>
-          <div className='collumn'>
+          
           {
             blahgs.map((blahg) => {
               return (
@@ -267,7 +267,7 @@ export default function NewBlahg() {
               )
             })
           }
-          </div>
+          
         </div>) : <>No Expenses Yet Add One Below</>
       }
 
