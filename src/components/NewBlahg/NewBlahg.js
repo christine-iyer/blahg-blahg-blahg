@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {Container, Row, Col} from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
+
 
 // import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
@@ -206,69 +207,45 @@ export default function NewBlahg() {
 
 <button onClick={() => createNewBlahg()}>READY TO SEE YOUR NewBlahg</button>
 </section>
-{/* 
-      {foundBlahg ? 
-      <div>
-          <p>{foundBlahg.title}</p>
-          <p>{foundBlahg.author}</p>
-          <p>{foundBlahg.text}</p>
-          <p>{foundBlahg.category}</p>
-          <Card.Img variant="top" src={foundBlahg.image} id="uploadedimage"  ></Card.Img>
-
-
-        </div> : <>No New Blog Entries Found </>
-      } */}
 
       {
 
         blahgs && blahgs.length ? (
-        <div className='collumns'>
+        <Container className='collumns'>
+          <Row>
+            <Col xs={4} md={6}>
           
           {
             blahgs.map((blahg) => {
               return (
+                <div className='collumn' key={blahg._id}>
+                  
+                  <div className="head">
+              <span className="headline hl1">{blahg.title}</span>
+              <p>
+                <span className="headline hl2">by {blahg.author}</span>
+              </p>
+            </div>
+            <figure className="figure">
+              <img className="media" src={blahg.image} alt="" />
+              <figcaption className="figcaption">{blahg.category}</figcaption>
+            </figure>
+            <p>{blahg.text} <span className="citation">{blahg.category}</span> This time</p>
+            
+          </div>
+
+
+
                 
 
-               
 
-                <Card key={blahg._id} style={{ 'width': '80%', 'padding': '5px', 'listStyle': 'none', 'borderStyle': 'dotted', 'textAlign': 'left', 'alignItems': 'flex-start','borderRadius':'15px' }}>
-                  
-                    
-                    
-                    <div className='head'>
-                    <span className="headline hl3">{blahg.title}</span>
-               <p>
-                    <span className="headline hl4">by {blahg.author}</span>
-               </p>
-
-
-                    {/* <Card.Title style={{ 'justifyContent': 'left', 'alignItems': 'flex-start', 'fontSize': '22px' }}>{blahg.title}</Card.Title> */}
-                 
-                    <Card.Img variant="top" src={blahg.image} alt={blahg.category} style={{
-                      'objectFit':'fill', 'borderRadius':'5px','width':'10%',
-                       'maxHeight':'15%', 'position': 'top'
-                    }}></Card.Img>
-
-
-                    {/* <Card.Subtitle style={{ 'textAlign': 'left', 'fontSize': '20px' }}>by  {blahg.author}</Card.Subtitle> */}
-                    </div>
-                    
-                    
-                    <Card.Body>
-                    <Card.Text style={{ 'justifyContent': 'left', 'fontSize': '16px' }}>{blahg.text}</Card.Text>
-
-
-
-                    <br /><Button variant='primary' style={{ 'textAligh': 'right' }} onClick={() => deleteNewBlahg(blahg._id)}>X</Button>
-                    <br /><Button onClick={() => updateNewBlahg(blahg._id)}>Edit</Button>
-                  </Card.Body>
-                </Card>
                 
               )
             })
           }
-          
-        </div>) : <>No Expenses Yet Add One Below</>
+          </Col>
+          </Row>
+        </Container>) : <>No Expenses Yet Add One Below</>
       }
 
 

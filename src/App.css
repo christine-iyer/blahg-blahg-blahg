@@ -1,17 +1,12 @@
 .App {
   text-align: left;
+  contain: fit;
 }
 
 
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
-  background-color: rgba(176,150,45);
+  background-color: antiquewhite;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,6 +41,7 @@ p {
 }
 
 .headerobjectswrapper {
+	color:aqua;
 }
 
 .subhead {
@@ -70,22 +66,28 @@ p {
 	word-spacing: -0.31em;
 	display: inline-block;
 	margin: 30px 2% 0 2%;
+	border-bottom: #2f2f2f;
 }
 .collumns {
+	color: darkblue;
+	display: grid;
+
 }
 
 .collumn {
-	font-size: 14px;
-	line-height: 20px;
+	font-size: 11px;
+	line-height: 16px;
 	width: 17.5%;
 	display: inline-block;
 	padding: 0 1% 0 1%;
-	vertical-align: top;
+	vertical-align:top;
 	margin-bottom: 50px;
 	transition: all 0.7s;
+	border-bottom: 1px;
+	
 }
 .collumn + .collumn {
-	border-left: 1px solid #2f2f2f;
+	border-left: navy;
 }
 .collumn .headline {
 	text-align: center;
@@ -107,6 +109,7 @@ p {
 	font-size: 24px;
 	box-sizing: border-box;
 	padding: 10px 0 10px 0;
+	text-transform: lowercase;
 }
 
 .collumn .headline.hl2:before {
@@ -116,6 +119,7 @@ p {
 	height: 7px;
 	display: block;
 	margin: 0 auto;
+	text-transform: uppercase;
 }
 .collumn .headline.hl2:after {
 	border-bottom: 1px solid #2f2f2f;
@@ -126,7 +130,7 @@ p {
 	margin: 0 auto;
 }
 
-.collumn .headline.hl3 {
+/* .collumn .headline.hl3 {
 	font-weight: 400;
 	font-style: italic;
 	font-size: 36px;
@@ -210,7 +214,7 @@ p {
 	font-size: 12px;
 	box-sizing: border-box;
 	padding: 10px 0 10px 0;
-}
+} */
 .collumn .citation {
 	font-family: 'Playfair Display', serif;
 	font-size: 36px;
@@ -251,6 +255,9 @@ p {
 	mix-blend-mode: multiply;
 	width: 100%;
 }
+Row {
+	flex-direction: row;
+}
 /*________________________________________________________________________________________________________________________________*/
 /*MEDIAQUERIES*/
 @media only all and (max-width: 1300px) {
@@ -273,7 +280,7 @@ p {
 		width: 100%;
 	}
 	.collumn + .collumn {
-		border-left: none;
+		border-left: 6pc;
 		border-bottom: 1px solid #2f2f2f;
 	}
 	header {
