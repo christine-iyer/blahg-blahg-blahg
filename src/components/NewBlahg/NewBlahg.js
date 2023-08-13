@@ -213,7 +213,7 @@ export default function NewBlahg() {
         blahgs && blahgs.length ? (
         <Container className='collumns'>
           <Row>
-            <Col xs={4} md={6}>
+            <Col xs={16} md={6}>
           
           {
             blahgs.map((blahg) => {
