@@ -99,6 +99,7 @@ export default function NewBlahg() {
       setFoundBlahg(data)
       setBlahg({
         title: '',
+        createdDate: '',
         author: '',
         category: '',
         text: '',
@@ -221,7 +222,7 @@ export default function NewBlahg() {
                 <div className='collumn' key={blahg._id}>
                   
                   <div className="head">
-              <span className="headline hl1">{blahg.title}</span>
+              <span className="headline hl1">{blahg.title} {blahg.createdDate}</span>
               <p>
                 <span className="headline hl2">by {blahg.author}</span>
               </p>

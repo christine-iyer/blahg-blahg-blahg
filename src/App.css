@@ -26,6 +26,7 @@
 	background: #ccc;
 	line-height: 1.2;
 	margin: 4em;
+	justify-items: center;
 	
    }
 header {
@@ -72,21 +73,21 @@ p {
 	word-spacing: -0.31em;
 	display: inline-block;
 	margin: 30px 2% 0 2%;
-	border-bottom: #2f2f2f;
+	background-color: pink;
 	display: grid;
   grid-template-columns: 1fr 18rem;
   grid-template-rows: auto 1fr;
-  align-items: start;
+justify-items: center;
+
   gap: 1rem;
 }
 .collumns {
 	color: darkblue;
 	display: grid;
+	
+
 
 }
-.collumns > article:nth-child(2) {
-	grid-row: 1 / -1;
-   }
 
 .collumn {
 	font-size: 11px;
@@ -98,7 +99,7 @@ p {
 	margin-bottom: 50px;
 	transition: all 0.7s;
 	border-bottom: 1px;
-	
+
 	
 }
 .collumn + .collumn {

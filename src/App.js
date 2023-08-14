@@ -8,12 +8,13 @@ function App() {
      
    
         <>  
-       
+       <Header />
           <NewBlahg />
         </>
  
 
       <>
+      
    
       </>
 
