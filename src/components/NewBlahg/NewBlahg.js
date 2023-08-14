@@ -222,19 +222,21 @@ export default function NewBlahg() {
                 <div className='collumn' key={blahg._id}>
                   
                   <div className="head">
-              <span className="headline hl1">{blahg.title} {blahg.createdDate}</span>
+              <span className="headline hl1">{blahg.title}</span>
+              <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
               <p>
                 <span className="headline hl2">by {blahg.author}</span>
               </p>
+              <q>{blahg.text.split('. ', 1)[0]}</q>
             </div>
             <figure className="figure">
               <img className="media" src={blahg.image} alt="" />
               <figcaption className="figcaption">{blahg.category}</figcaption>
             </figure>
-            <p>{blahg.text} <span className="citation">{blahg.category}</span> This time</p>
+            <p>{blahg.text} <span className="citation"></span></p>
+          
             
-          </div>
-
+   </div>
 
 
                 

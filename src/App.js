@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
 import NewBlahg from './components/NewBlahg/NewBlahg';
+
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
    
         <>  
        <Header />
+
           <NewBlahg />
         </>
  
