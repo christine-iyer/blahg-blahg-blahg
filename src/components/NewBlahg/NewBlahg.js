@@ -8,30 +8,8 @@ const paragraphStyles = {
   WebKitLineClamp:3, 
   WebKitBoxOrient: 'vertical', 
   overflow: 'hidden', 
-  display: '-webkit-box'
+  display: "-webkit-box",
 }
-
-
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-
-// function BasicExample() {
-//   return (
-//     <Card style={{ width: '18rem' }}>
-//       <Card.Img variant="top" src="holder.js/100px180" />
-//       <Card.Body>
-//         <Card.Title>Card Title</Card.Title>
-//         <Card.Text>
-//           Some quick example text to build on the card title and make up the
-//           bulk of the card's content.
-//         </Card.Text>
-//         <Button variant="primary">Go somewhere</Button>
-//       </Card.Body>
-//     </Card>
-//   );
-// }
-
-// export default BasicExample;
 
 export default function NewBlahg() {
   const [blahgs, setBlahgs] = useState([])
@@ -129,7 +107,6 @@ export default function NewBlahg() {
   useEffect(()=> {
     if(ref.current) {
       console.log(ref.current.scrollHeight,ref.current.clientHeight)
-
       setShowReadMoreButton(
         ref.current.scrollHeight !== ref.current.clientHeight
       )
@@ -254,13 +231,14 @@ export default function NewBlahg() {
               <img className="media" src={blahg.image} alt="" />
               <figcaption className="figcaption">{blahg.category}</figcaption>
             </figure>
+            <div>
             <p style={isOpen ? null : paragraphStyles} ref = {ref}>{blahg.text} <span className="citation"></span></p>
             {showReadMoreButton && (
               <button onClick={()=> setIsOpen(!isOpen)}>
                 {isOpen ? 'read less...' : 'read more ...'}
               </button>
             )}
-          
+          </div>
             
    </div>
 
