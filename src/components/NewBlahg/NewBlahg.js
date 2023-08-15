@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import Button from 'react-bootstrap/Button';
 import {Container, Row, Col} from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
+const paragraphStyles = {
+  WebKitLineClamp:3, 
+  WebKitBoxOrient: 'vertical', 
+  overflow: 'hidden', 
+  display: '-webkit-box'
+}
 
 
 // import Button from 'react-bootstrap/Button';
@@ -37,9 +43,14 @@ export default function NewBlahg() {
     text: '',
     image: ''
   })
+  const [isOpen, setIsOpen]= useState(false)
+  const [showReadMoreButton, setShowReadMoreButton]= useState(false)
+  const ref = useRef(null)
+
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
+
 
   // index
   const getNewBlahgs = async () => {
@@ -114,6 +125,16 @@ export default function NewBlahg() {
   useEffect(() => {
     getNewBlahgs()
   }, [foundBlahg])
+
+  useEffect(()=> {
+    if(ref.current) {
+      console.log(ref.current.scrollHeight,ref.current.clientHeight)
+
+      setShowReadMoreButton(
+        ref.current.scrollHeight !== ref.current.clientHeight
+      )
+    }
+  },[])
 
 
   const [url, updateUrl] = useState(false);
@@ -233,7 +254,12 @@ export default function NewBlahg() {
               <img className="media" src={blahg.image} alt="" />
               <figcaption className="figcaption">{blahg.category}</figcaption>
             </figure>
-            <p>{blahg.text} <span className="citation"></span></p>
+            <p style={isOpen ? null : paragraphStyles} ref = {ref}>{blahg.text} <span className="citation"></span></p>
+            {showReadMoreButton && (
+              <button onClick={()=> setIsOpen(!isOpen)}>
+                {isOpen ? 'read less...' : 'read more ...'}
+              </button>
+            )}
           
             
    </div>
