@@ -238,6 +238,7 @@ const updateNewBlahg = async (id, updatedData) => {
         />
                         <ReadMore
                           text={blahg.text}
+                         
                           deleteNewBlahg={deleteNewBlahg}
                           
                           numberOfLines={1}
