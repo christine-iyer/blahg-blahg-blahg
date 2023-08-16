@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
 import NewBlahg from './components/NewBlahg/NewBlahg';
+import FruitsPage from './Fruits';
 
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
        <Header />
 
           <NewBlahg />
+          <FruitsPage />
         </>
  
 

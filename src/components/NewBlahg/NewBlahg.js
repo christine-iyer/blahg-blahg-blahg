@@ -17,9 +17,10 @@ export default function NewBlahg() {
     text: '',
     image: ''
   })
-  const [isOpen, setIsOpen] = useState(false)
+  const [showInput, setShowInput] = useState(false)
   const [showReadMoreButton, setShowReadMoreButton] = useState(false)
   const ref = useRef(null)
+  const inputRef = useRef(null)
 
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
@@ -50,25 +51,24 @@ export default function NewBlahg() {
       console.error(error)
     }
   }
-  // update
-  const updateNewBlahg = async (id, updatedData) => {
-    try {
+
+
+const updateNewBlahg = async (id, updatedData) => {
+  try {
       const response = await fetch(`/api/blahgs/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ...updatedData })
+          method: "PUT",
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({...updatedData})
       })
       const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setBlahgs(blahgsCopy)
-    } catch (error) {
+      setFoundBlahg(data)
+  } catch (error) {
       console.error(error)
-    }
   }
+}
+
   // create
   const createNewBlahg = async () => {
     try {
@@ -98,14 +98,6 @@ export default function NewBlahg() {
   useEffect(() => {
     getNewBlahgs()
   }, [foundBlahg])
-
-  // useEffect(()=> {
-  //   if(ref.current) {
-  //     setShowReadMoreButton(
-  //       ref.current.scrollHeight !== ref.current.clientHeight
-  //     )
-  //   }
-  // },[])
 
 
   const [url, updateUrl] = useState(false);
@@ -162,6 +154,10 @@ export default function NewBlahg() {
         <input
           value={blahg.title}
           onChange={handleChange}
+          onClick={(e) => {
+            setShowInput(!showInput)
+          }}
+          
           name="title">
         </input>
         <br />
@@ -215,6 +211,7 @@ export default function NewBlahg() {
 
                         <div className="head">
                           <span className="headline hl1">{blahg.title}</span>
+                          <h4 onClick={() => setShowInput(!showInput)}>{blahg.text}</h4>
                           <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
                           <p>
                             <span className="headline hl2">by {blahg.author}</span>
@@ -225,14 +222,31 @@ export default function NewBlahg() {
                           <img className="media" src={blahg.image} alt="" />
                           <figcaption className="figcaption">{blahg.category}</figcaption>
                         </figure>
-
+                        <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
+        <input
+          ref={inputRef}
+          style={{ display: showInput ? 'block' : 'none' }}
+          type='text'
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              const title = inputRef.current.value
+              updateNewBlahg(blahg._id, { title })
+              setShowInput(false)
+            }
+          }}
+          defaultValue={blahg.title}
+        />
                         <ReadMore
                           text={blahg.text}
+                          deleteNewBlahg={deleteNewBlahg}
+                          
                           numberOfLines={1}
                           lineHeight={1.2}
-
-                          showLessButton={true}><br></br></ReadMore>
-
+                          showLessButton={true}> 
+                         
+                        </ReadMore>
+                        <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
+                        <br/><button onClick={() => updateNewBlahg(blahg._id)}>X</button>
                       </div>
 
 
