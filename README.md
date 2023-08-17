@@ -108,3 +108,13 @@ function BasicExample() {
 
 export default BasicExample;
 ```
+
+```
+//edit blahg
+<label>name
+<input
+type='text", 
+default={found.blahg.name}
+onClick={(e) => {updateBlahg(blahg._id)}}
+</label>
+```

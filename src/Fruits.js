@@ -103,7 +103,7 @@ export default function BlahgsPage (props){
             }
             {'Name '}<input value={newBlahg.title} onChange={handleChange} name="title"></input><br/>
             {'Color '}<input value={newBlahg.category} onChange={handleChange} name="category"></input><br/>
-            {'Ready To Eat '}<input  value={newBlahg.text} onChange={(evt) => setNewBlahg({...newBlahg, readyToEat: evt.target.checked })}></input><br/>
+            {'Ready To Eat '}<input  value={newBlahg.text} onChange={(evt) => setNewBlahg({...newBlahg })}></input><br/>
             <button onClick={() => createBlahg() }>Create A New Blahg</button>
             {
                 foundBlahg? <div>
@@ -112,6 +112,7 @@ export default function BlahgsPage (props){
                     <h3>{foundBlahg.text}</h3>
                 </div>: <>No Blahg in Found Blahg State</>
             }
+
         </>
     )
 }
