@@ -224,17 +224,18 @@ const updateNewBlahg = async (id, updatedData) => {
                         </figure>
                         <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
         <input
-          ref={inputRef}
+         
           style={{ display: showInput ? 'block' : 'none' }}
           type='text'
+          defaultValue={blahg.title}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              const title = inputRef.current.value
-              updateNewBlahg(blahg._id, { title })
+              
+              updateNewBlahg(blahg._id, e)
               setShowInput(false)
             }
           }}
-          defaultValue={blahg.title}
+        
         />
                         <ReadMore
                           text={blahg.text}
@@ -247,7 +248,7 @@ const updateNewBlahg = async (id, updatedData) => {
                          
                         </ReadMore>
                         <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
-                        <br/><button onClick={() => updateNewBlahg(blahg._id)}>X</button>
+          
                       </div>
 
 
