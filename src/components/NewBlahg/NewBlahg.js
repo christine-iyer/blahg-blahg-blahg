@@ -8,6 +8,7 @@ import ReadMore from './ReadMore';
 import '../../App.css';
 
 export default function NewBlahg() {
+  const [showCreate, setShowCreate] = useState(null)
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahg, setFoundBlahg] = useState(null)
   const [blahg, setBlahg] = useState({
@@ -21,12 +22,9 @@ export default function NewBlahg() {
   const [showReadMoreButton, setShowReadMoreButton] = useState(false)
   const ref = useRef(null)
   const inputRef = useRef(null)
-
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
-
-  // index
   const getNewBlahgs = async () => {
     try {
       const response = await fetch('/api/blahgs')
@@ -36,7 +34,6 @@ export default function NewBlahg() {
       console.error(error)
     }
   }
-  // delete
   const deleteNewBlahg = async (id) => {
     try {
       const response = await fetch(`/api/blahgs/${id}`, {
@@ -51,25 +48,21 @@ export default function NewBlahg() {
       console.error(error)
     }
   }
-
-
-const updateNewBlahg = async (id, updatedData) => {
-  try {
+  const updateNewBlahg = async (id, updatedData) => {
+    try {
       const response = await fetch(`/api/blahgs/${id}`, {
-          method: "PUT",
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({...updatedData})
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...updatedData })
       })
       const data = await response.json()
       setFoundBlahg(data)
-  } catch (error) {
+    } catch (error) {
       console.error(error)
+    }
   }
-}
-
-  // create
   const createNewBlahg = async () => {
     try {
       const response = await fetch(`/api/blahgs`, {
@@ -93,12 +86,9 @@ const updateNewBlahg = async (id, updatedData) => {
       console.error(error)
     }
   }
-
-
   useEffect(() => {
     getNewBlahgs()
   }, [foundBlahg])
-
 
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -127,6 +117,13 @@ const updateNewBlahg = async (id, updatedData) => {
     <>
       <section>
         <h1>CREATE A NEW BLOG</h1>
+        <div>
+        <Button variant="primary" size="lg"
+        on onClick={...}
+        
+        > Show Entry Form</Button>
+
+        <hr></hr>
         <UploadWidget onUpload={handleOnUpload}>
           {({ open }) => {
             function handleOnClick(e) {
@@ -140,7 +137,6 @@ const updateNewBlahg = async (id, updatedData) => {
             )
           }}
         </UploadWidget>
-
         {error && <p>{error}</p>}
 
         {url && (
@@ -149,16 +145,15 @@ const updateNewBlahg = async (id, updatedData) => {
             <p className="url">{url}</p>
           </div>
         )}
-
         {'New Blahg Name'}
         <input
           value={blahg.title}
           onChange={handleChange}
+          name="title"
           onClick={(e) => {
             setShowInput(!showInput)
           }}
-          
-          name="title">
+        >
         </input>
         <br />
         {'Author '}
@@ -193,116 +188,72 @@ const updateNewBlahg = async (id, updatedData) => {
           name="url">
         </input>
         <br />
-
-        <button onClick={() => createNewBlahg()}>READY TO SEE YOUR NewBlahg</button>
+        <button onClick={() => createNewBlahg()}>Your NewBlahg</button>
+        </div>
       </section>
+      
+      <hr></hr>
+      {blahgs && blahgs.length ? (
+        <Container className='collumns'>
+          <Row>
+            <Col xs={16} md={6}>
+              {blahgs.map((blahg) => {
+                return (
+                  <div className='collumn' key={blahg._id}>
+                    <div className="head">
+                      <input
+                        style={{ display: showInput ? "block" : "none" }}
+                        type="text"
+                        defaultValue={blahg.title}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            updateNewBlahg(blahg.id, e)
+                            setShowInput(false)
+                          }
+                        }}
+                      />
+                      <span
+                        className="headline hl1">{blahg.title}
+                        <input
+                          style={{ display: showInput ? "block" : "none" }}
+                          type="text"
+                          defaultValue={blahg.title}
 
-      {
-
-        blahgs && blahgs.length ? (
-          <Container className='collumns'>
-            <Row>
-              <Col xs={16} md={6}>
-
-                {
-                  blahgs.map((blahg) => {
-                    return (
-                      <div className='collumn' key={blahg._id}>
-
-                        <div className="head"><input
-                         style={{ display: showInput ? "block" : "none" }}
-                         type="text"
-                         defaultValue={blahg.title}
-
-                         onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                   updateNewBlahg(blahg.id, e)
-                                   setShowInput(false)
-                              }
-                         }}
-                    />
-                          <span 
-                          className="headline hl1"
-                          
-                          
-                          
-                          
-
-                          >{blahg.title}
-                          <input
-                         style={{ display: showInput ? "block" : "none" }}
-                         type="text"
-                         defaultValue={blahg.title}
-
-                         onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                   updateNewBlahg(blahg.id, e)
-                                   setShowInput(false)
-                              }
-                         }}
-                    />
-                          
-                          
-                          </span>
-                          <h4 onClick={() => setShowInput(!showInput)}>{blahg.text}</h4>
-                          <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
-                          <p>
-                            <span className="headline hl2">by {blahg.author}</span>
-                          </p>
-                          <q>`{blahg.text.substr(0, 27)}...`</q>
-                        </div>
-                        <figure className="figure">
-                          <img className="media" src={blahg.image} alt="" />
-                          <figcaption className="figcaption">{blahg.category}</figcaption>
-                        </figure>
-                        <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
-        {/* <input
-         
-          style={{ display: showInput ? 'block' : 'none' }}
-          type='text'
-          defaultValue={blahg.title}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              
-              updateNewBlahg(blahg._id, e)
-              setShowInput(false)
-            }
-          }}
-        
-        /> */}
-                        <ReadMore
-                          text={blahg.text}
-                         
-                          deleteNewBlahg={deleteNewBlahg}
-                          
-                          numberOfLines={1}
-                          lineHeight={1.2}
-                          showLessButton={true}> 
-                         
-                        </ReadMore>
-
-
-                        <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
-          
-                      </div>
-
-
-
-
-
-
-
-                    )
-                  })
-                }
-              </Col>
-            </Row>
-          </Container>) : <>No Expenses Yet Add One Below</>
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              updateNewBlahg(blahg.id, e)
+                              setShowInput(false)
+                            }
+                          }}
+                        /> </span>
+                      <h4 onClick={() => setShowInput(!showInput)}>{blahg.text}</h4>
+                      <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
+                      <p>
+                        <span className="headline hl2">by {blahg.author}</span>
+                      </p>
+                      <q>`{blahg.text.substr(0, 27)}...`</q>
+                    </div>
+                    <figure className="figure">
+                      <img className="media" src={blahg.image} alt="" />
+                      <figcaption className="figcaption">{blahg.category}</figcaption>
+                    </figure>
+                    <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
+                    <ReadMore
+                      text={blahg.text}
+                      deleteNewBlahg={deleteNewBlahg}
+                      numberOfLines={1}
+                      lineHeight={1.2}
+                      showLessButton={true}>
+                    </ReadMore>
+                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
+                  </div>
+                )
+              })
+              }
+            </Col>
+          </Row>
+        </Container>) : <>No Entries yet! Yet Add One Below</>
       }
-
-
-
-
     </>
   )
 }
