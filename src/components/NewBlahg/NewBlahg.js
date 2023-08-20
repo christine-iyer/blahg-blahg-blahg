@@ -209,8 +209,41 @@ const updateNewBlahg = async (id, updatedData) => {
                     return (
                       <div className='collumn' key={blahg._id}>
 
-                        <div className="head">
-                          <span className="headline hl1">{blahg.title}</span>
+                        <div className="head"><input
+                         style={{ display: showInput ? "block" : "none" }}
+                         type="text"
+                         defaultValue={blahg.title}
+
+                         onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                   updateNewBlahg(blahg.id, e)
+                                   setShowInput(false)
+                              }
+                         }}
+                    />
+                          <span 
+                          className="headline hl1"
+                          
+                          
+                          
+                          
+
+                          >{blahg.title}
+                          <input
+                         style={{ display: showInput ? "block" : "none" }}
+                         type="text"
+                         defaultValue={blahg.title}
+
+                         onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                   updateNewBlahg(blahg.id, e)
+                                   setShowInput(false)
+                              }
+                         }}
+                    />
+                          
+                          
+                          </span>
                           <h4 onClick={() => setShowInput(!showInput)}>{blahg.text}</h4>
                           <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
                           <p>
@@ -223,7 +256,7 @@ const updateNewBlahg = async (id, updatedData) => {
                           <figcaption className="figcaption">{blahg.category}</figcaption>
                         </figure>
                         <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
-        <input
+        {/* <input
          
           style={{ display: showInput ? 'block' : 'none' }}
           type='text'
@@ -236,7 +269,7 @@ const updateNewBlahg = async (id, updatedData) => {
             }
           }}
         
-        />
+        /> */}
                         <ReadMore
                           text={blahg.text}
                          
@@ -247,6 +280,8 @@ const updateNewBlahg = async (id, updatedData) => {
                           showLessButton={true}> 
                          
                         </ReadMore>
+
+
                         <br/><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
           
                       </div>
