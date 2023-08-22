@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import PostsList from '../../components/PostsList/PostsList'
 import PostsHeader from '../../components/PostsHeader/PostsHeader'
 import NavBar from '../../components/NavBar/NavBar'
-import UserLogOut from '../../components/UserLogOut/UserLogOut'
 import styles from './PostsPage.module.scss'
 import * as postsAPI from "../../utilities/posts-api"
 
