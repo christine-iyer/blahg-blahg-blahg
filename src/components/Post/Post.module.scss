@@ -1,0 +1,41 @@
+.Post {
+     -webkit-box-align: stretch;
+     -webkit-box-direction: normal;
+     -webkit-box-orient: vertical;
+     align-items: stretch;
+     padding: 0 16px 16px 16px;
+     border-radius: 5px;
+     border-style: solid;
+     border-width: 1px;
+     border-color: #eee #ddd #bbb;
+     box-sizing: border-box;
+     display: flex;
+     flex-basis: auto;
+     flex-direction: column;
+     flex-shrink: 0;
+     margin: 5px;
+     min-height: 0px;
+     // min-width: 0px;
+     height: 100%;
+     // padding: 5px;
+     position: relative;
+     z-index: 0;
+ }
+ 
+ .Post p {
+     font-size: 16px;
+     font-weight: normal;
+     line-height: 20px;
+     overflow-wrap: break-word;
+   }
+ 
+   .PostFooter{
+     display: flex;
+     justify-content: space-between;
+     margin-top: 20px;
+   }
+ 
+ // .Buttons {
+ //     display: block;
+ //     justify-content: end;
+ // }

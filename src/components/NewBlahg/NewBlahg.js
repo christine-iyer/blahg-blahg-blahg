@@ -118,80 +118,83 @@ export default function NewBlahg() {
       <section>
         <h1>CREATE A NEW BLOG</h1>
         <div>
-        <Button variant="primary" size="lg"
-        on onClick={...}
-        
-        > Show Entry Form</Button>
+          <Button variant="primary" size="lg"
 
-        <hr></hr>
-        <UploadWidget onUpload={handleOnUpload}>
-          {({ open }) => {
-            function handleOnClick(e) {
-              e.preventDefault();
-              open();
-            }
-            return (
-              <button onClick={handleOnClick}>
-                Upload an Image
-              </button>
-            )
-          }}
-        </UploadWidget>
-        {error && <p>{error}</p>}
 
-        {url && (
-          <div key={url._id} className='card' style={{ width: '8rem' }}>
-            <img variant="top" src={url} id="uploadedimage"></img>
-            <p className="url">{url}</p>
-          </div>
-        )}
-        {'New Blahg Name'}
-        <input
-          value={blahg.title}
-          onChange={handleChange}
-          name="title"
-          onClick={(e) => {
-            setShowInput(!showInput)
-          }}
-        >
-        </input>
-        <br />
-        {'Author '}
-        <input
-          value={blahg.author}
-          onChange={handleChange}
-          name="author">
-        </input>
-        <br />
-        {'Text '}
-        <input
-          value={blahg.text}
-          onChange={handleChange}
-          name="text">
-        </input>
-        <br />
-        {'Category '}
-        <select
-          value={blahg.category}
-          onChange={handleChange}
-          name="category">
-          <option value="Curiousities">Select One ...</option>
-          <option value="Curiousities">Curiousities</option>
-          <option value="Thoughts">Thoughts</option>
-          <option value="ToDos">ToDos</option>
-        </select>
-        <br />
-        {'Image '}
-        <input
-          value={url}
-          onChange={handleChange}
-          name="url">
-        </input>
-        <br />
-        <button onClick={() => createNewBlahg()}>Your NewBlahg</button>
+          > Show Entry Form</Button>
+
+          <hr></hr>
+          <UploadWidget onUpload={handleOnUpload}>
+            {({ open }) => {
+              function handleOnClick(e) {
+                e.preventDefault();
+                open();
+              }
+              return (
+                <button onClick={handleOnClick}>
+                  Upload an Image
+                </button>
+              )
+            }}
+          </UploadWidget>
+          {error && <p>{error}</p>}
+
+          {url && (
+            <div key={url._id} className='card' style={{ width: '8rem' }}>
+              <img variant="top" src={url} id="uploadedimage"></img>
+              <p className="url">{url}</p>
+            </div>
+          )}
+          {'New Blahg Name'}
+          <input
+          type='text'
+          defaultValue={blahg.title}
+            value={blahg.title}
+            onChange={handleChange}
+            name="title"
+            onClick={(e) => {
+              setShowInput(!showInput)
+            }}
+            
+          >
+          </input>
+          <br />
+          {'Author '}
+          <input
+            value={blahg.author}
+            onChange={handleChange}
+            name="author">
+          </input>
+          <br />
+          {'Text '}
+          <input
+            value={blahg.text}
+            onChange={handleChange}
+            name="text">
+          </input>
+          <br />
+          {'Category '}
+          <select
+            value={blahg.category}
+            onChange={handleChange}
+            name="category">
+            <option value="Curiousities">Select One ...</option>
+            <option value="Curiousities">Curiousities</option>
+            <option value="Thoughts">Thoughts</option>
+            <option value="ToDos">ToDos</option>
+          </select>
+          <br />
+          {'Image '}
+          <input
+            value={url}
+            onChange={handleChange}
+            name="url">
+          </input>
+          <br />
+          <button onClick={() => createNewBlahg()}>Your NewBlahg</button>
         </div>
       </section>
-      
+
       <hr></hr>
       {blahgs && blahgs.length ? (
         <Container className='collumns'>
@@ -201,43 +204,25 @@ export default function NewBlahg() {
                 return (
                   <div className='collumn' key={blahg._id}>
                     <div className="head">
-                      <input
-                        style={{ display: showInput ? "block" : "none" }}
-                        type="text"
-                        defaultValue={blahg.title}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            updateNewBlahg(blahg.id, e)
-                            setShowInput(false)
-                          }
-                        }}
-                      />
-                      <span
-                        className="headline hl1">{blahg.title}
-                        <input
-                          style={{ display: showInput ? "block" : "none" }}
-                          type="text"
-                          defaultValue={blahg.title}
 
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                              updateNewBlahg(blahg.id, e)
-                              setShowInput(false)
-                            }
-                          }}
-                        /> </span>
-                      <h4 onClick={() => setShowInput(!showInput)}>{blahg.text}</h4>
+                      <h2 >{blahg.title}</h2>
+                      
+
                       <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
+
                       <p>
                         <span className="headline hl2">by {blahg.author}</span>
                       </p>
                       <q>`{blahg.text.substr(0, 27)}...`</q>
+
                     </div>
                     <figure className="figure">
                       <img className="media" src={blahg.image} alt="" />
+
                       <figcaption className="figcaption">{blahg.category}</figcaption>
+
                     </figure>
-                    <h4 onClick={() => setShowInput(!showInput)}>{blahg.title}</h4>
+
                     <ReadMore
                       text={blahg.text}
                       deleteNewBlahg={deleteNewBlahg}
@@ -246,7 +231,9 @@ export default function NewBlahg() {
                       showLessButton={true}>
                     </ReadMore>
                     <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
+                    <br /><button onClick={() => updateNewBlahg(blahg._id)}>E</button>
                   </div>
+
                 )
               })
               }
