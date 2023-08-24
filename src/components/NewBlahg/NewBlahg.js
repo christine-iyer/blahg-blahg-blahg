@@ -55,10 +55,16 @@ export default function NewBlahg() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...updatedData })
+        body: JSON.stringify({ updatedData })
       })
+
+
+
       const data = await response.json()
-      setFoundBlahg(data)
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg.id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
+      setFoundBlahg(blahgsCopy)
     } catch (error) {
       console.error(error)
     }
@@ -148,7 +154,7 @@ export default function NewBlahg() {
           {'New Blahg Name'}
           <input
           type='text'
-          defaultValue={blahg.title}
+          // defaultValue={blahg.title}
             value={blahg.title}
             onChange={handleChange}
             name="title"
