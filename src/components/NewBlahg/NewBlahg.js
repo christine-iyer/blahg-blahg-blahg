@@ -62,7 +62,7 @@ export default function NewBlahg() {
 
       const data = await response.json()
       const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg.id)
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
       setFoundBlahg(blahgsCopy)
     } catch (error) {
