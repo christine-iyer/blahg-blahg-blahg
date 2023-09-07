@@ -226,16 +226,17 @@ export default function NewBlahg() {
                       <img className="media" src={blahg.image} alt="" />
 
                       <figcaption className="figcaption">{blahg.category}</figcaption>
-
-                    </figure>
-
-                    <ReadMore
+<ReadMore class="readMore"
                       text={blahg.text}
                       deleteNewBlahg={deleteNewBlahg}
                       numberOfLines={1}
                       lineHeight={1.2}
                       showLessButton={true}>
                     </ReadMore>
+                    </figure>
+                   
+
+                    
                     <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                     <br /><button onClick={() => updateNewBlahg(blahg._id)}>E</button>
                   </div>
