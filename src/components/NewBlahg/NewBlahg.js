@@ -151,7 +151,7 @@ export default function NewBlahg() {
               <p className="url">{url}</p>
             </div>
           )}
-          {'New Blahg Name'}
+          {'Bottom Line'}
           <input
           type='text'
           // defaultValue={blahg.title}
@@ -172,7 +172,7 @@ export default function NewBlahg() {
             name="author">
           </input>
           <br />
-          {'Text '}
+          {'Details '}
           <input
             value={blahg.text}
             onChange={handleChange}
@@ -185,9 +185,12 @@ export default function NewBlahg() {
             onChange={handleChange}
             name="category">
             <option value="Curiousities">Select One ...</option>
-            <option value="Curiousities">Curiousities</option>
-            <option value="Thoughts">Thoughts</option>
-            <option value="ToDos">ToDos</option>
+            <option value="🍼">🍼</option>
+            <option value="🥱">🥱</option>
+            <option value="🦀">🦀</option>
+            <option value="🫀">🫀</option>
+            <option value="💞">💞</option>
+            <option value="♍">♍</option>
           </select>
           <br />
           {'Image '}
@@ -238,7 +241,6 @@ export default function NewBlahg() {
 
                     
                     <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
-                    <br /><button onClick={() => updateNewBlahg(blahg._id)}>E</button>
                   </div>
 
                 )
