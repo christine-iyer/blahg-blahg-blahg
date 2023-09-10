@@ -282,5 +282,7 @@ Row {
    button{
 	position: relative;
    }
-   
+   select {
+	font-weight: 400;
+   }
    
