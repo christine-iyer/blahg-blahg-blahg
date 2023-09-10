@@ -185,12 +185,13 @@ export default function NewBlahg() {
             onChange={handleChange}
             name="category">
             <option value="Curiousities">Select One ...</option>
-            <option style={{'fontWeight': 'bold'}}value="🍼">🍼</option>
-            <option value="🥱">🥱</option>
-            <option value="🦀">🦀</option>
-            <option value="🫀">🫀</option>
-            <option value="💞">💞</option>
-            <option value="♍">♍</option>
+            <option value="💛">💛</option>
+            <option value="🧡">🧡</option>
+            <option value="🖤">🖤</option>
+            <option value="💚">💚</option>
+            <option value="💙">💙</option>
+            <option value="💜">💜</option>
+            <option value="❤️">❤️</option>
           </select>
           <br />
           {'Image '}
@@ -240,7 +241,7 @@ export default function NewBlahg() {
                    
 
                     
-                    {/* <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button> */}
+                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                   </div>
 
                 )
