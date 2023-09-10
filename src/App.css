@@ -285,4 +285,11 @@ Row {
    select {
 	font-weight: 400;
    }
+   .button {
+	font-size: xxx-large;
+	border: none;
+  }
+  input {
+	margin: 0.09em;;
+  }
    

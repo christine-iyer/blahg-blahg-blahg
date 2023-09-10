@@ -8,7 +8,7 @@ import ReadMore from './ReadMore';
 import '../../App.css';
 
 export default function NewBlahg() {
-  const [showCreate, setShowCreate] = useState(null)
+
   const [blahgs, setBlahgs] = useState([])
   const [foundBlahg, setFoundBlahg] = useState(null)
   const [blahg, setBlahg] = useState({
@@ -122,14 +122,10 @@ export default function NewBlahg() {
   return (
     <>
       <section>
-        <h1>CREATE A NEW BLOG</h1>
+        <h1>How much cuter can you get?</h1>
         <div>
-          <Button variant="primary" size="lg"
+         
 
-
-          > Show Entry Form</Button>
-
-          <hr></hr>
           <UploadWidget onUpload={handleOnUpload}>
             {({ open }) => {
               function handleOnClick(e) {
@@ -137,9 +133,10 @@ export default function NewBlahg() {
                 open();
               }
               return (
-                <button onClick={handleOnClick}>
-                  Upload an Image
+                <button class = "button" onClick={handleOnClick}>
+                  🤍
                 </button>
+                
               )
             }}
           </UploadWidget>
@@ -151,6 +148,8 @@ export default function NewBlahg() {
               <p className="url">{url}</p>
             </div>
           )}
+          <br></br>
+          <br></br>
           {'Bottom Line'}
           <input
           type='text'
@@ -238,10 +237,6 @@ export default function NewBlahg() {
                       showLessButton={true}>
                     </ReadMore>
                     </figure>
-                   
-
-                    
-                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                   </div>
 
                 )
