@@ -57,10 +57,7 @@ export default function NewBlahg() {
         },
         body: JSON.stringify({ updatedData })
       })
-
-
-
-      const data = await response.json()
+const data = await response.json()
       const blahgsCopy = [...blahgs]
       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
@@ -115,17 +112,14 @@ export default function NewBlahg() {
       category: '',
       text: '',
       image: result?.info?.secure_url
-
-    })
+})
   }
-
-  return (
+return (
     <>
       <section>
         <h1>How much cuter can you get?</h1>
         <div>
-         
-
+<span>
           <UploadWidget onUpload={handleOnUpload}>
             {({ open }) => {
               function handleOnClick(e) {
@@ -136,54 +130,52 @@ export default function NewBlahg() {
                 <button class = "button" onClick={handleOnClick}>
                   🤍
                 </button>
-                
               )
             }}
           </UploadWidget>
           {error && <p>{error}</p>}
-
-          {url && (
+{url && (
             <div key={url._id} className='card' style={{ width: '8rem' }}>
-              <img variant="top" src={url} id="uploadedimage"></img>
-              <p className="url">{url}</p>
+              <img variant="top" src={url} id="uploadedimage" style={{'width': 90, "borderRadius": "5%"}}></img>
+              {/* <p className="url">{url}</p> */}
             </div>
           )}
+          </span>
           <br></br>
           <br></br>
-          {'Bottom Line'}
-          <input
+         <input
           type='text'
           // defaultValue={blahg.title}
             value={blahg.title}
             onChange={handleChange}
             name="title"
+            placeholder='Bottom Line'
             onClick={(e) => {
               setShowInput(!showInput)
             }}
-            
           >
           </input>
           <br />
-          {'Author '}
-          <input
+         <input
             value={blahg.author}
             onChange={handleChange}
-            name="author">
+            name="author"
+            placeholder='Author'>
           </input>
           <br />
-          {'Details '}
           <input
             value={blahg.text}
             onChange={handleChange}
-            name="text">
+            name="text"
+            rows={2}
+            placeholder='Details'>
           </input>
           <br />
-          {'Category '}
           <select
             value={blahg.category}
             onChange={handleChange}
             name="category">
-            <option value="Curiousities">Select One ...</option>
+            <option value="Curiousities">Select 🤍</option>
             <option value="💛">💛</option>
             <option value="🧡">🧡</option>
             <option value="🖤">🖤</option>
@@ -193,18 +185,11 @@ export default function NewBlahg() {
             <option value="❤️">❤️</option>
           </select>
           <br />
-          {'Image '}
-          <input
-            value={url}
-            onChange={handleChange}
-            name="url">
-          </input>
-          <br />
+<br />
           <button onClick={() => createNewBlahg()}>Your NewBlahg</button>
         </div>
       </section>
-
-      <hr></hr>
+<hr></hr>
       {blahgs && blahgs.length ? (
         <Container className='collumns'>
           <Row>
@@ -213,22 +198,16 @@ export default function NewBlahg() {
                 return (
                   <div className='collumn' key={blahg._id}>
                     <div className="head">
-
-                      <h2 >{blahg.title}</h2>
-                      
-
+<h2 >{blahg.title}</h2>
                       <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
-
-                      <p>
+<p>
                         <span className="headline hl2">by {blahg.author}</span>
                       </p>
                       <q>`{blahg.text.substr(0, 27)}...`</q>
-
-                    </div>
+</div>
                     <figure className="figure">
                       <img className="media" src={blahg.image} alt="" />
-
-                      <figcaption className="figcaption">{blahg.category}</figcaption>
+<figcaption className="figcaption">{blahg.category}</figcaption>
 <ReadMore class="readMore"
                       text={blahg.text}
                       deleteNewBlahg={deleteNewBlahg}
@@ -237,6 +216,7 @@ export default function NewBlahg() {
                       showLessButton={true}>
                     </ReadMore>
                     </figure>
+                    <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                   </div>
 
                 )

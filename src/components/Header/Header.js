@@ -7,11 +7,11 @@ export default function Header() {
     <div className="headerobjectswrapper">
         <div className="weatherforcastbox">
           <span style={{'fontStyle': 'italic'}}>Weatherforcast </span>
-          <span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span>
+          <span>Weight: 7km/h SSE; Height: 21°C</span>
      </div>
-        <header>Newpost York</header>
+        <header>FranniGram</header>
     </div>
-<div className="subhead">York, MA - Thursday August 30, 1978 - 7 P</div>
+<div className="subhead">Portland, ME - Sunday September 10, 2023 - 7 P</div>
 </div>
     </>
    

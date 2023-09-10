@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react'
-import NavBar from '../../components/NavBar/NavBar'
-import AuthPage from '../AuthPage/AuthPage'
-import WigsPage from "../WigsPage/WigsPage"
-import PostsPage from '../PostsPage/PostsPage'
+
 import styles from './App.module.scss'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { getUser } from '../../utilities/users-service'
-import ProfilePage from '../ProfilePage/ProfilePage'
+
+
 
 function App () {
   const [state, setState] = useState(null)

@@ -290,6 +290,7 @@ Row {
 	border: none;
   }
   input {
-	margin: 0.09em;;
+	margin: 0.09em;
+	border: none;
   }
    
