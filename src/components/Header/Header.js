@@ -6,12 +6,12 @@ export default function Header() {
     <div className="head">
     <div className="headerobjectswrapper">
         <div className="weatherforcastbox">
-          <span style={{'fontStyle': 'italic'}}>Weatherforcast </span>
-          <span>Weight: 7km/h SSE; Height: 21°C</span>
+          <span style={{'fontStyle': 'italic'}}> </span>
+          <span>Weight: 8 lbs 9 ozs; Height: 20 3/4 in</span>
      </div>
-        <header>FranniGram</header>
+        <header>Chat Brat</header>
     </div>
-<div className="subhead">Portland, ME - Sunday September 10, 2023 - 7 P</div>
+<div className="subhead">Portland, ME - Monday September 11, 2023 - 10:50 AM Weight: 8 lbs 9 ozs; Height: 20 3/4 ins</div>
 </div>
     </>
    

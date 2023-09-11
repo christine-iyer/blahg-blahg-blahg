@@ -176,13 +176,12 @@ return (
             onChange={handleChange}
             name="category">
             <option value="Curiousities">Select 🤍</option>
-            <option value="💛">💛</option>
-            <option value="🧡">🧡</option>
-            <option value="🖤">🖤</option>
-            <option value="💚">💚</option>
-            <option value="💙">💙</option>
-            <option value="💜">💜</option>
-            <option value="❤️">❤️</option>
+            <option value="💛 Thank Me ⬅️, Franky">💛 Thank Me ⬅️, Franky</option>
+            <option value="🧡 Janky Franky">🧡 Janky Franky</option>
+            <option value="💚 Frankly Franky">💚 Frankly Franky</option>
+            <option value="💙 Cranky Franky">💙 Cranky Franky</option>
+            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
+            <option value="❤️ Franky Panky">❤️ Franky Panky</option>
           </select>
           <br />
 <br />
@@ -198,16 +197,21 @@ return (
                 return (
                   <div className='collumn' key={blahg._id}>
                     <div className="head">
-<h2 >{blahg.title}</h2>
-                      <span>{new Date(blahg.createdAt).toLocaleDateString()}</span>
-<p>
-                        <span className="headline hl2">by {blahg.author}</span>
-                      </p>
+
+                      <span><h2 >{blahg.title},  </h2>created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
+{/* <p>
+                        <span className="headline hl2">Created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
+                      </p> */}
+                      <br></br>
                       <q>`{blahg.text.substr(0, 27)}...`</q>
 </div>
+<div class="frame">
                     <figure className="figure">
+
                       <img className="media" src={blahg.image} alt="" />
+
 <figcaption className="figcaption">{blahg.category}</figcaption>
+
 <ReadMore class="readMore"
                       text={blahg.text}
                       deleteNewBlahg={deleteNewBlahg}
@@ -218,8 +222,10 @@ return (
                     </figure>
                     <br /><button onClick={() => deleteNewBlahg(blahg._id)}>X</button>
                   </div>
+                  </div>
 
-                )
+                ) 
+
               })
               }
             </Col>
