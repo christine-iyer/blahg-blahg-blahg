@@ -116,7 +116,7 @@ const data = await response.json()
 return (
     <>
       <section>
-        <h1>Something adorable?⤵️ </h1>
+        <h1>⤵️ 🤍 🎥 Something adorable?</h1>
         <div>
 <span>
           <UploadWidget onUpload={handleOnUpload}>
