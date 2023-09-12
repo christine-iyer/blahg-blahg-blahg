@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
-import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 import ReadMore from './ReadMore';
@@ -127,7 +126,7 @@ return (
                 open();
               }
               return (
-                <button class = "button" onClick={handleOnClick}>
+                <button className = "button" onClick={handleOnClick}>
                   🤍
                 </button>
               )
@@ -212,7 +211,7 @@ return (
 
 <figcaption className="figcaption">{blahg.category}</figcaption>
 
-<ReadMore class="readMore"
+<ReadMore className="readMore"
                       text={blahg.text}
                       deleteNewBlahg={deleteNewBlahg}
                       numberOfLines={1}
