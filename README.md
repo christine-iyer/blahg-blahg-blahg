@@ -3,7 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-not sure why not working on heroky
+not sure why not working on heroku
+maybe not a heroku problem.
 In the project directory, you can run:
 
 ### `npm start`
