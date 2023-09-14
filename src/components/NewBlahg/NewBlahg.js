@@ -47,27 +47,27 @@ export default function NewBlahg() {
       console.error(error)
     }
   }
-  const updateNewBlahg = async (id, updatedData) => {
-    try {
-      const response = await fetch(`/api/blahgs/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ updatedData })
-      })
-const data = await response.json()
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
-      setFoundBlahg(blahgsCopy)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+//   const updateNewBlahg = async (id, updatedData) => {
+//     try {
+//       const response = await fetch(`/api/blahgs/${id}`, {
+//         method: "PUT",
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ updatedData })
+//       })
+// const data = await response.json()
+//       const blahgsCopy = [...blahgs]
+//       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+//       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
+//       setFoundBlahg(blahgsCopy)
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
   const createNewBlahg = async () => {
     try {
-      const response = await fetch(`/api/blahgs`, {
+      const response = await fetch('/api/blahgs', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ const data = await response.json()
 return (
     <>
       <section>
-        <h1>⤵️ 🤍 🎥 Something adorable?</h1>
+        <h1>Post Shamelessly</h1>
         <div>
 <span>
           <UploadWidget onUpload={handleOnUpload}>
@@ -136,7 +136,7 @@ return (
 {url && (
             <div key={url._id} className='card' style={{ width: '8rem' }}>
               <img variant="top" src={url} id="uploadedimage" style={{'width': 90, "borderRadius": "5%"}}></img>
-              {/* <p className="url">{url}</p> */}
+              <p className="url">{url}</p>
             </div>
           )}
           </span>
@@ -234,4 +234,3 @@ return (
     </>
   )
 }
-
