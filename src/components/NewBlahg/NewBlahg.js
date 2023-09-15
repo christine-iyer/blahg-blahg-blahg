@@ -135,7 +135,7 @@ return (
           {error && <p>{error}</p>}
 {url && (
             <div key={url._id} className='card' style={{ width: '8rem' }}>
-              <img variant="top" src={url} id="uploadedimage" style={{'width': 90, "borderRadius": "5%"}}></img>
+              <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{'width': 90, "borderRadius": "5%"}}></img>
               <p className="url">{url}</p>
             </div>
           )}
@@ -202,7 +202,7 @@ return (
                         <span className="headline hl2">Created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
                       </p> */}
                       <br></br>
-                      
+
                       <q>`{blahg.text.substr(0, 27)}...`</q>
 </div>
 <div className="frame">
