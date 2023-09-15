@@ -202,6 +202,7 @@ return (
                         <span className="headline hl2">Created by {blahg.author}, on {new Date(blahg.createdAt).toLocaleDateString()}</span>
                       </p> */}
                       <br></br>
+                      
                       <q>`{blahg.text.substr(0, 27)}...`</q>
 </div>
 <div className="frame">
