@@ -204,7 +204,7 @@ return (
                       <br></br>
                       <q>`{blahg.text.substr(0, 27)}...`</q>
 </div>
-<div class="frame">
+<div className="frame">
                     <figure className="figure">
 
                       <img className="media" src={blahg.image} alt="" />

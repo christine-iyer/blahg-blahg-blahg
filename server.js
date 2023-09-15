@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config()
 require('./config/database')
-const bodyParser = require("body-parser"); router.use(bodyParser.json());
+
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
