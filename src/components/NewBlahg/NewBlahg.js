@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import { Container, Row, Col } from 'react-bootstrap';
-import { border } from '@cloudinary/url-gen/qualifiers/background';
 import ReadMore from './ReadMore';
 import '../../App.css';
 
@@ -18,9 +17,7 @@ export default function NewBlahg() {
     image: ''
   })
   const [showInput, setShowInput] = useState(false)
-  const [showReadMoreButton, setShowReadMoreButton] = useState(false)
-  const ref = useRef(null)
-  const inputRef = useRef(null)
+
   const handleChange = (evt) => {
     setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
   }
