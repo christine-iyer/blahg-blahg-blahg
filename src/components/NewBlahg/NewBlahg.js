@@ -72,7 +72,7 @@ export default function NewBlahg() {
         body: JSON.stringify({ ...blahg })
       })
       const data = await response.json()
-      setFoundBlahg(data)
+      setFoundBlahg([data, ...blahgs])
       setBlahg({
         title: '',
         createdDate: '',
