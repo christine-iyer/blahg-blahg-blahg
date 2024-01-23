@@ -44,24 +44,24 @@ export default function NewBlahg() {
       console.error(error)
     }
   }
-//   const updateNewBlahg = async (id, updatedData) => {
-//     try {
-//       const response = await fetch(`/api/blahgs/${id}`, {
-//         method: "PUT",
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ updatedData })
-//       })
-// const data = await response.json()
-//       const blahgsCopy = [...blahgs]
-//       const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-//       blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
-//       setFoundBlahg(blahgsCopy)
-//     } catch (error) {
-//       console.error(error)
-//     }
-//   }
+  const updateNewBlahg = async (id, updatedData) => {
+    try {
+      const response = await fetch(`/api/blahgs/${id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ updatedData })
+      })
+const data = await response.json()
+      const blahgsCopy = [...blahgs]
+      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
+      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData}
+      setFoundBlahg(blahgsCopy)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   const createNewBlahg = async () => {
     try {
       const response = await fetch('/api/blahgs', {
@@ -211,6 +211,7 @@ return (
 
 <ReadMore className="readMore"
                       text={blahg.text}
+                      updateNewBlahg={updateNewBlahg}
                       deleteNewBlahg={deleteNewBlahg}
                       numberOfLines={1}
                       lineHeight={1.2}
